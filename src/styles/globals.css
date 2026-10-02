@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F3F1EC;
+  --foreground: #171717;
+  --muted-foreground: #6F6C66;
+  --dark-background: #0E0F10;
+  --dark-foreground: #F3F1EC;
+  --forest: #1D2A22;
+  --forest-light: #2A3A30;
+  --dusk: #0B1220;
+  --line: rgba(23, 23, 23, 0.14);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-dark-background: var(--dark-background);
+  --color-dark-foreground: var(--dark-foreground);
+  --color-forest: var(--forest);
+  --color-forest-light: var(--forest-light);
+  --color-dusk: var(--dusk);
+  --color-line: var(--line);
+
+  --font-display: var(--font-display), serif;
+  --font-sans: var(--font-sans), sans-serif;
+}
+
+/* Base Resets & Viewport Foundation */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Focus and Selection */
+::selection {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 4px;
+}
+
+/* Typography scale utilities */
+@utility text-display-giant {
+  font-family: var(--font-display), serif;
+  font-size: clamp(3.25rem, 10vw, 10rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+@utility text-display-large {
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.5rem, 6.5vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+@utility text-heading-medium {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.75rem, 3.5vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+@utility text-editorial-label {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility text-body-copy {
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  line-height: 1.6;
+}
+
+@utility text-metadata {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+
+/* Spacing and Layout Containers */
+@utility container-wide {
+  width: 100%;
+  max-width: 1800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+
+  @media (min-width: 768px) {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+}
+
+@utility container-editorial {
+  width: 100%;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+
+  @media (min-width: 768px) {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+}
+
+@utility scene-viewport {
+  min-height: 100dvh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* Editorial serif headline: tall, tight, with italic accents */
+@utility text-serif-xl {
+  font-family: var(--font-display), serif;
+  font-size: clamp(3rem, 8vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+}
+
+@utility text-serif-lg {
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.5rem, 5.5vw, 5.75rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+@utility text-micro {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Arch mask used throughout */
+@utility arch {
+  border-radius: 999px 999px 0 0;
+  overflow: hidden;
+}
+
+@keyframes cloud-drift {
+  0% { transform: translate3d(-4%, 0, 0) scale(1); }
+  50% { transform: translate3d(4%, -2%, 0) scale(1.06); }
+  100% { transform: translate3d(-4%, 0, 0) scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
