@@ -34,7 +34,7 @@ export default function RootLayout({
       lang="en"
       className={`${fontDisplay.variable} ${fontSans.variable}`}
     >
-      <body className="font-sans bg-background text-foreground antialiased selection:bg-foreground selection:text-background min-h-screen overflow-x-hidden">
+      <body className="font-sans bg-background text-foreground antialiased selection:bg-foreground selection:text-background min-h-screen overflow-x-clip">
         <Navigation />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
